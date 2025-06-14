@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 /*  for a battleship game we need a 4x4 grid boolean array with 1's scattered around it
@@ -9,14 +11,30 @@ using namespace std;
     i will try adding a graph or a computer opponent later
 */
 
+// randomizer function to place ships randomly in the grid
+bool randomizer(bool ships[4][4]){
+    int n, m;
+    srand(time(0));
+    for (int i = 0; i < 1; i++){
+        for (int j = 0; j < 4; j++){
+            n = rand() % 4;
+            m = rand() % 4;
+            ships[n][m] = 1;
+        }
+    } 
+}
+
 int main(){
     // 4x4 boolean grid
     bool ships[4][4] = {
-        {0, 1, 0, 0},
-        {0, 0, 1, 0},
-        {0, 0, 0, 1},
-        {1, 0, 0, 0}
+        {0, 0, 0, 0},
+        {0, 0, 0, 0},
+        {0, 0, 0, 0},
+        {0, 0, 0, 0}
     };
+    // call randomizer to place ships
+    randomizer(ships);
+    
     // input coords
     int row, column, numberturns = 1;
     int numberships = 4;
@@ -40,4 +58,5 @@ int main(){
     cout << "Victory!" << endl;
     cout << "Number of turns: " << numberturns << endl;
 
+    
 }
